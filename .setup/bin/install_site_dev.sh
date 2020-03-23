@@ -123,7 +123,7 @@ done
 
 if echo "${result}" | grep -E -q "composer\.(json|lock)"; then
     # install composer dependencies and generate classmap
-    su - ${PHP_USER} -c "composer install -d \"${SUBMITTY_INSTALL_DIR}/site\" --no-dev --optimize-autoloader --no-suggest"
+    su - ${PHP_USER} -c "composer install -d \"${SUBMITTY_INSTALL_DIR}/site\" --no-dev --prefer-dist --optimize-autoloader --no-suggest"
     chown -R ${PHP_USER}:${PHP_USER} ${SUBMITTY_INSTALL_DIR}/site/vendor
     find ${SUBMITTY_INSTALL_DIR}/site/vendor -type d -exec chmod 551 {} \;
     find ${SUBMITTY_INSTALL_DIR}/site/vendor -type f -exec chmod 440 {} \;
